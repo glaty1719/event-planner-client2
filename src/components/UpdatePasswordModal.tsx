@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography, CircularProgress, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 import type {PasswordUpdateRequest} from "../types/auth.ts";
 import {PasswordUpdateRequestSchema} from "../schemas/authSchema.ts";
-import {useUpdatePasswordMutation} from "../api/apiSlice.ts";
+import {useUpdatePasswordMutation} from "../features/auth/authSlice.ts";
 import {toast} from "react-toastify";
 import {useState} from "react";
 import * as React from "react";

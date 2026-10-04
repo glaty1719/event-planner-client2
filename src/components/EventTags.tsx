@@ -100,27 +100,28 @@ const Tag = ({tag}: TagProps) => {
     );
 };
 
+const ORGANIZER_TAGS_PARAMS = { fetchEventOrganizersTags: true };
+const USER_TAGS_PARAMS = { fetchEventOrganizersTags: false };
+
 export const Tags = () => {
 
     const isOrganizer = useAppSelector(selectIsOrganizer);
     const focusedEventId = useAppSelector(selectFocusedEventId);
 
-    const params = { fetchEventOrganizersTags: true};
-    const userParams = { fetchEventOrganizersTags: false };
     const {
         isLoading: isLoadingOrganizersTags,
         isError: isErrorLoadingOrganizersTags,
         error: OrganizersTagsError,
-    } = useGetEventTagsQuery({ event_id: focusedEventId!, params }, {skip: (!focusedEventId || isOrganizer)});
+    } = useGetEventTagsQuery({ event_id: focusedEventId!, params: ORGANIZER_TAGS_PARAMS }, {skip: (!focusedEventId || isOrganizer)});
 
     const {
         isLoading: isLoadingUserTags,
         isError: isErrorLoadingUserTags,
         error: UserTagsError,
-    } = useGetEventTagsQuery({ event_id: focusedEventId!, params: userParams }, {skip: !focusedEventId});
+    } = useGetEventTagsQuery({ event_id: focusedEventId!, params: USER_TAGS_PARAMS }, {skip: !focusedEventId});
 
-    const organizersTags = useAppSelector(selectAllEventTags(focusedEventId!, params));
-    const usersTags = useAppSelector(selectAllEventTags(focusedEventId!, userParams));
+    const organizersTags = useAppSelector(selectAllEventTags(focusedEventId!, ORGANIZER_TAGS_PARAMS));
+    const usersTags = useAppSelector(selectAllEventTags(focusedEventId!, USER_TAGS_PARAMS));
 
     if (!focusedEventId) return null;
     if (isLoadingOrganizersTags || isLoadingUserTags) return <div><CircularProgress/></div>;

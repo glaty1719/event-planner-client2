@@ -1,11 +1,10 @@
 import './App.css'
 import {AppRoutes} from "./components/AppRoutes.tsx";
 import {ToastContainer} from "react-toastify";
-import {getSessionPersistence, getUserAuth} from "./features/auth/authSlice.ts";
+import {getSessionPersistence, getUserAuth, useRefreshMutation} from "./features/auth/authSlice.ts";
 import {useAppSelector} from "./hooks/storeHooks.ts";
 import {useEffect} from "react";
 import {CircularProgress} from "@mui/material";
-import {useRefreshMutation} from "./api/apiSlice.ts";
 import {ResponsiveAppBar} from "./components/ResponsiveAppBar.tsx";
 import {useGetMeQuery} from "./features/user/userSlice.ts";
 import {SideBar} from "./components/SideBar.tsx";
@@ -21,7 +20,7 @@ export const App = () => {
         const refresh = async() => {
             try{
                 await refreshUser().unwrap();
-            } catch (error) {
+            } catch {
                 console.error("session expired");
             }
         };

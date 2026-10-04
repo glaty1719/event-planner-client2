@@ -1,18 +1,20 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {apiSlice} from "../api/apiSlice.ts";
+import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice.ts";
-import modalsReducer from "./slices/modalsSlice";
+import eventsReducer from "../features/events/eventsSlice.ts";
+import userReducer from "../features/user/userSlice.ts";
+import modalsReducer from "./slices/modalsSlice.ts";
+import { injectStore } from "../utils/http.ts";
 
 export const store = configureStore({
     reducer: {
         modals: modalsReducer,
         auth: authReducer,
-        [apiSlice.reducerPath]: apiSlice.reducer,
+        events: eventsReducer,
+        user: userReducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware()
-            .concat(apiSlice.middleware)
 });
+
+injectStore(store.dispatch, store.getState);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

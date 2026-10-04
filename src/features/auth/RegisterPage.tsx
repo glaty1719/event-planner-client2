@@ -1,4 +1,3 @@
-import {useRegisterMutation} from "../../api/apiSlice.ts";
 import {type ReactNode, useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 import {
@@ -22,7 +21,7 @@ import * as React from "react";
 import {Visibility, VisibilityOff } from "@mui/icons-material";
 import {useModalGuard} from "../../hooks/eventHooks.ts";
 import {useAppSelector} from "../../hooks/storeHooks.ts";
-import {getUserAuth} from "./authSlice.ts";
+import {getUserAuth, useRegisterMutation} from "./authSlice.ts";
 
 export const RegisterPage = () => {
     useModalGuard();

@@ -3,10 +3,9 @@ import { useForm } from "react-hook-form";
 import { Box, Button, TextField, Typography, Link, Stack } from "@mui/material";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-import { useConfirmMutation, useResendConfirmationCodeMutation } from "../../api/apiSlice.ts";
 import {useModalGuard} from "../../hooks/eventHooks.ts";
 import {useAppSelector} from "../../hooks/storeHooks.ts";
-import {getUserAuth} from "./authSlice.ts";
+import {getUserAuth, useConfirmMutation, useResendConfirmationCodeMutation} from "./authSlice.ts";
 
 export const ConfirmPage = () => {
     useModalGuard();

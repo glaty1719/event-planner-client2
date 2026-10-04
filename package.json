@@ -18,6 +18,7 @@
     "@mui/x-date-pickers": "^9.2.0",
     "@reduxjs/toolkit": "^2.11.2",
     "async-mutex": "^0.5.0",
+    "axios": "^1.20.0",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.20",
     "jwt-decode": "^4.0.0",
